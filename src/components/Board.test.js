@@ -1,4 +1,3 @@
-import { render, screen } from '@testing-library/react';
 import Board from './Board';
 import { shallow } from 'enzyme';
 

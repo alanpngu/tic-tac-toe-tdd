@@ -1,4 +1,3 @@
-import { render, screen } from '@testing-library/react';
 import Game from './Game';
 import { shallow } from 'enzyme';
 

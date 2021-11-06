@@ -1,4 +1,3 @@
-import { render, screen } from '@testing-library/react';
 import Square from './Square';
 import { shallow } from 'enzyme';
 
