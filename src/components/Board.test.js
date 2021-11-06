@@ -14,4 +14,11 @@ describe('render Board component', () => {
     const component = mount(<Board />);
     expect(component.find('div.boardRow').length).toBe(3);
   });
+  it('check if 3 rows of 3 squares', () => {
+    const component = mount(<Board />);
+    component.find('div.boardRow').forEach((row) => {
+      console.log(row.debug());
+      expect(row.find(Square)).toHaveLength(3);
+    });
+  });
 });
