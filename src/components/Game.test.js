@@ -10,4 +10,10 @@ describe('render Game component', () => {
     const component = shallow(<Game/>)
     expect(component.find(Board)).toHaveLength(1);
   })
+  it ('check if initial state of squares is all null', () => {
+    const component = shallow(<Game/>)
+    const squareStatus =component.state().squares
+    expect(squareStatus).toEqual(Array(9).fill(null))
+
+  })
 });
