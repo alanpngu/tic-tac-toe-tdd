@@ -6,8 +6,12 @@ export class Board extends Component {
     render() {
         return (
             <div name = "board">
-                <div>
+                <div className = 'boardRow'>
                     <Square />
+                </div>
+                <div className = 'boardRow'>
+                </div>
+                <div className = 'boardRow'>
                 </div>
             </div>       
         );
