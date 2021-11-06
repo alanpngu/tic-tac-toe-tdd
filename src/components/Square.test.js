@@ -9,4 +9,11 @@ describe('render Square component', () => {
     const wrapper = shallow(<Square />)
     expect(wrapper.find('button').length).toEqual(1);
   })
-});
+  it('detect if button is clickable', () => {
+    const mockCallback = jest.fn();
+    const wrapper = shallow(<Square onClick = {mockCallback}/>)
+    const buttonComponent = wrapper.find('button')
+    buttonComponent.simulate('click')
+    expect(mockCallback).toHaveBeenCalled();
+  })
+})
