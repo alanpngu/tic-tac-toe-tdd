@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
 import Square from './Square'
 import React, {Component} from 'react'
+import './Board.css'
 
 export class Board extends Component {
   renderSquare() {
