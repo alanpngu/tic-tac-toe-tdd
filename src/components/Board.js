@@ -3,24 +3,31 @@ import Square from './Square'
 import React, {Component} from 'react'
 
 export class Board extends Component {
+  renderSquare() {
+    return (
+      <Square
+        onClick={this.props.onClick}
+      />
+    );
+  }
 
   render() {
     return (
       <div name = "board">
         <div className = 'boardRow'>
-          <Square />
-          <Square />
-          <Square />
+          {this.renderSquare()}
+          {this.renderSquare()}
+          {this.renderSquare()}
         </div>
         <div className = 'boardRow'>
-          <Square />
-          <Square />
-          <Square />
+          {this.renderSquare()}
+          {this.renderSquare()}
+          {this.renderSquare()}
         </div>
         <div className = 'boardRow'>
-          <Square />
-          <Square />
-          <Square />
+          {this.renderSquare()}
+          {this.renderSquare()}
+          {this.renderSquare()}
         </div>
     </div>       
    );
