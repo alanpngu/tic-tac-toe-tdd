@@ -20,4 +20,12 @@ describe('render Board component', () => {
       expect(row.find(Square)).toHaveLength(3);
     });
   });
+  it('check if a button can be clicked from square from board', () => {
+    const mockCallback = jest.fn();
+    const squares = Array(9).fill(<Square onClick={mockCallback}/>)
+    const component = mount(<Board squares={squares} onClick={mockCallback}/>)
+    const buttonComponent = component.find('button').first()
+    buttonComponent.simulate('click')
+    expect(mockCallback).toHaveBeenCalled()
+  });
 });
