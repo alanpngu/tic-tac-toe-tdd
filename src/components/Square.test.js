@@ -1,6 +1,8 @@
 import Square from './Square';
 import { shallow } from 'enzyme';
 
+const mockCallback = jest.fn();
+
 describe('render Square component', () => {
   it('renders Square', () => {
     shallow(<Square />);
@@ -10,10 +12,17 @@ describe('render Square component', () => {
     expect(wrapper.find('button').length).toEqual(1);
   })
   it('detect if button is clickable', () => {
-    const mockCallback = jest.fn();
     const wrapper = shallow(<Square onClick = {mockCallback}/>)
     const buttonComponent = wrapper.find('button')
     buttonComponent.simulate('click')
     expect(mockCallback).toHaveBeenCalled();
+  })
+  it('renders an X if X is passed as value', () => {
+    const component = shallow(<Square value={'X'}/>)
+    expect(component.text()).toBe('X')
+  })
+  it('renders an O if O is passed as value', () => {
+    const component = shallow(<Square value={'O'}/>)
+    expect(component.text()).toBe('O')
   })
 })
