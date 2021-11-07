@@ -52,4 +52,12 @@ describe('render Game component', () => {
     firstButton.simulate('click')
     expect(component.find('button').first().text()).toBe('X')
   }) 
+  it('player does not use turn if already taken square clicked', () => {
+    expect(component.find('div.turnText').text()).toEqual("It is currently X's turn!")
+    const firstButton = component.find('button').first()
+    firstButton.simulate('click')
+    expect(component.find('div.turnText').text()).toEqual("It is currently O's turn!")
+    firstButton.simulate('click')
+    expect(component.find('div.turnText').text()).toEqual("It is currently O's turn!")
+  }) 
 });
