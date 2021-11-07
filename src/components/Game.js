@@ -19,8 +19,10 @@ export class Game extends Component {
     const history = this.state.history;
     const current = history[history.length - 1];
     const squares = current.squares.slice();
+    if(squares[i]) {
+        return;
+    }
     squares[i] = this.state.xTurn ? 'X' : 'O';
-    console.log(squares[i]);
     this.setState({
       history: history.concat([
         {

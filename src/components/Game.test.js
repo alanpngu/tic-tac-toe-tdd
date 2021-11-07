@@ -49,7 +49,6 @@ describe('render Game component', () => {
     const firstButton = component.find('button').first()
     firstButton.simulate('click')
     expect(component.find('button').first().text()).toBe('X')
-    console.log(component.find('button').first().text())
     firstButton.simulate('click')
     expect(component.find('button').first().text()).toBe('X')
   }) 
