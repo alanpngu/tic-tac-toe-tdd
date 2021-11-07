@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Board from './Board'
 import { calculateWinner } from '../utils/calculateWinner'
 import Reset from './Reset'
+import Undo from './Undo'
 
 export class Game extends Component {
   constructor(props){
@@ -21,12 +22,23 @@ export class Game extends Component {
     }
   }
 
+  undoTurn() {
+    if (this.state.turnsTaken !== 0) {
+      this.setState({
+        xTurn: !this.state.xTurn,
+        turnsTaken: (this.state.turnsTaken - 1)
+      })
+    } else {
+      return;
+    }
+  }
+
   resetToStart() {
     this.setState(this.initialState);
   }
 
   handleClick(i) {
-    const history = this.state.history;
+    const history = this.state.history.slice(0, this.state.turnsTaken + 1)
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if(calculateWinner(squares) || squares[i]) {
@@ -40,12 +52,13 @@ export class Game extends Component {
         }
       ]),
       xTurn: !this.state.xTurn,
+      turnsTaken: history.length
     });
   }
 
   render() {
     const history = this.state.history;
-    const current = history[history.length - 1];
+    const current = history[this.state.turnsTaken];
     const winnerFound = calculateWinner(current.squares);
     let turnText;
     if (winnerFound) {
@@ -68,6 +81,7 @@ export class Game extends Component {
             {turnText}
           </div>
           <div className = 'otherButtons'>
+            <Undo className = 'undoButton' onClick = {() => this.undoTurn()} />
             <Reset className = 'resetButton' onClick = {() => this.resetToStart()} />
           </div>    
       </div>   
