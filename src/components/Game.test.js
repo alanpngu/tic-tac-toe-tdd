@@ -3,30 +3,32 @@ import { shallow, mount } from 'enzyme';
 import Board from './Board'
 
 describe('render Game component', () => {
+  let component = mount(<Game/>)
   it('renders Game', () => {
-    shallow(<Game />);
+    expect(component).toBeDefined();
+
   })
-  it ('game contains a Board', () => {  
-    const component = shallow(<Game/>)
+  it ('game contains a Board', () => {      
     expect(component.find(Board)).toHaveLength(1);
   })
   it ('check if initial state of squares is all null', () => {
-    const component = shallow(<Game/>)
-    const squareStatus =component.state().squares
-    expect(squareStatus).toEqual(Array(9).fill(null))
+    const squareStatus = component.state().history
+    expect(squareStatus[0].squares).toEqual(Array(9).fill(null))
   })
   it ('check if first player turn is X', () => {
-    const component = shallow(<Game/>)
     const turnStatus = component.state().xTurn
     expect(turnStatus).toEqual(true)  
   });
   it('displays whose turn it is currently', () => {
-    const wrapper = mount(<Game />)
-    expect(wrapper.find('div.turnText').text()).toEqual("It is currently X's turn!")
+    expect(component.find('div.turnText').text()).toEqual("It is currently X's turn!")
   })
   it('turns taken is initialy 0', () => {
-    const component = shallow(<Game/>)
     const takenStatus = component.state().turnsTaken
     expect(takenStatus).toEqual(0)  
+  })
+  it('displays X when first player clicks', () => {
+    const buttonComponent = component.find('button').first()
+    buttonComponent.simulate('click')
+    expect(component.find('button').first().text()).toBe('X')
   })
 });
