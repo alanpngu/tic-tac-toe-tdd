@@ -2,6 +2,7 @@ import Game from './Game';
 import { shallow, mount } from 'enzyme';
 import Board from './Board'
 
+
 describe('render Game component', () => {
   
   let component;
@@ -60,4 +61,12 @@ describe('render Game component', () => {
     firstButton.simulate('click')
     expect(component.find('div.turnText').text()).toEqual("It is currently O's turn!")
   }) 
+  it ('displays that X is a winner if X win condition met', () => {
+    component.find('button').at(0).simulate('click');
+    component.find('button').at(3).simulate('click');
+    component.find('button').at(1).simulate('click');
+    component.find('button').at(4).simulate('click');
+    component.find('button').at(2).simulate('click');
+    expect(component.find('div.turnText').text()).toEqual("X has won the game!")
+  })
 });
