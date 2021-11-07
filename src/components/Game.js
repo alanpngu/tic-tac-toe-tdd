@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Board from './Board'
+import { calculateWinner } from '../utils/calculateWinner'
 
 export class Game extends Component {
   constructor(props){
@@ -19,7 +20,7 @@ export class Game extends Component {
     const history = this.state.history;
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    if(squares[i]) {
+    if(calculateWinner(squares) || squares[i]) {
         return;
     }
     squares[i] = this.state.xTurn ? 'X' : 'O';
@@ -36,7 +37,14 @@ export class Game extends Component {
   render() {
     const history = this.state.history;
     const current = history[history.length - 1];
-    let turnText = this.state.xTurn ? `It is currently X's turn!` : `It is currently O's turn!`
+    const winnerFound = calculateWinner(current.squares);
+    let turnText;
+    if (winnerFound) {
+      turnText = winnerFound + " has won the game!";
+    } else {
+      turnText = this.state.xTurn ? `It is currently X's turn!` : `It is currently O's turn!`
+    }
+
     return (    
       <div name = "game">
         <Board 
