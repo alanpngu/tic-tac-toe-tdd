@@ -69,4 +69,13 @@ describe('render Game component', () => {
     component.find('button').at(2).simulate('click');
     expect(component.find('div.turnText').text()).toEqual("X has won the game!")
   })
+  it ('displays that O is a winner if O win condition met', () => {
+    component.find('button').at(0).simulate('click');
+    component.find('button').at(3).simulate('click');
+    component.find('button').at(1).simulate('click');
+    component.find('button').at(4).simulate('click');
+    component.find('button').at(7).simulate('click');
+    component.find('button').at(5).simulate('click');
+    expect(component.find('div.turnText').text()).toEqual("O has won the game!")
+  })
 });
