@@ -4,8 +4,12 @@ import Board from './Board'
 
 describe('render Game component', () => {
   
-  let component = mount(<Game />);
+  let component;
   
+  beforeEach(() => {
+    component = mount(<Game/>);
+  })
+
   it('renders Game', () => {
     expect(component).toBeDefined();
 
