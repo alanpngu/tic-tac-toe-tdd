@@ -45,4 +45,12 @@ describe('render Game component', () => {
     lastButton.simulate('click')
     expect(component.find('button').last().text()).toBe('O')
   })
+  it('X is still displayed when second player clicks on same location as first', () => {
+    const firstButton = component.find('button').first()
+    firstButton.simulate('click')
+    expect(component.find('button').first().text()).toBe('X')
+    console.log(component.find('button').first().text())
+    firstButton.simulate('click')
+    expect(component.find('button').first().text()).toBe('X')
+  }) 
 });
