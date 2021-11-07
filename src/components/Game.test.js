@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import Board from './Board'
 
 describe('render Game component', () => {
-  
+
   let component;
   
   beforeEach(() => {
@@ -40,26 +40,26 @@ describe('render Game component', () => {
   it('displays X when first player clicks', () => {
     const buttonComponent = component.find('button').first()
     buttonComponent.simulate('click')
-    expect(component.find('button').first().text()).toBe('X')
+    expect(buttonComponent.text()).toBe('X')
   })
 
   it ('displays O properly when second player clicks', () => {
     const firstButton = component.find('button').first()
     firstButton.simulate('click')
-    expect(component.find('button').first().text()).toBe('X')
+    expect(firstButton.text()).toBe('X')
 
     const lastButton = component.find('button').last()
     lastButton.simulate('click')
-    expect(component.find('button').last().text()).toBe('O')
+    expect(lastButton.text()).toBe('O')
   })
 
   it('X is still displayed when second player clicks on same location as first', () => {
     const firstButton = component.find('button').first()
     firstButton.simulate('click')
-    expect(component.find('button').first().text()).toBe('X')
+    expect(firstButton.text()).toBe('X')
 
     firstButton.simulate('click')
-    expect(component.find('button').first().text()).toBe('X')
+    expect(firstButton.text()).toBe('X')
   }) 
 
   it('player does not use turn if already taken square clicked', () => {
@@ -103,5 +103,16 @@ describe('render Game component', () => {
     component.find('button').at(6).simulate('click');
     component.find('button').at(8).simulate('click');
     expect(component.find('div.turnText').text()).toEqual("This game is a draw!")
+  })
+
+  it ('clicking on Reset button will reset the board and turns to initial state', () => {
+    const boardDiv = component.find('div.gameBoard');
+    const firstButton = boardDiv.find('button').first()
+    firstButton.simulate('click');
+    expect(firstButton.text()).toBe('X')
+    const otherButtonDiv = component.find('div.otherButtons');
+    const resetButton = otherButtonDiv.find('button').first();
+    resetButton.simulate('click');
+    expect(firstButton.text()).toBe('')
   })
 });
