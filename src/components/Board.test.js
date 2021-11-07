@@ -3,7 +3,6 @@ import Square from './Square';
 import { shallow, mount } from 'enzyme';
 
 describe('render Board component', () => {
-
   let squares;
   let mockCallback;
   let component;

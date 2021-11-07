@@ -17,5 +17,4 @@ describe('render the initial app', () => {
     const wrapper = shallow(<App/>);
     expect(wrapper.find(Game)).toHaveLength(1);
   });
-    
 });
