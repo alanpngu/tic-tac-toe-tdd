@@ -24,4 +24,9 @@ describe('render Game component', () => {
     const wrapper = mount(<Game />)
     expect(wrapper.find('div.turnText').text()).toEqual("It is currently X's turn!")
   })
+  it('turns taken is initialy 0', () => {
+    const component = shallow(<Game/>)
+    const takenStatus = component.state().turnsTaken
+    expect(takenStatus).toEqual(0)  
+  })
 });
