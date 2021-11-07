@@ -14,6 +14,10 @@ describe('render Game component', () => {
     const component = shallow(<Game/>)
     const squareStatus =component.state().squares
     expect(squareStatus).toEqual(Array(9).fill(null))
-
   })
+  it ('check if first player turn is X', () => {
+    const component = shallow(<Game/>)
+    const turnStatus = component.state().xTurn
+    expect(turnStatus).toEqual(true)  
+  });
 });
