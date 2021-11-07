@@ -41,6 +41,8 @@ export class Game extends Component {
     let turnText;
     if (winnerFound) {
       turnText = winnerFound + " has won the game!";
+    } else if (history.length >= 10) {
+      turnText = "This game is a draw!";
     } else {
       turnText = this.state.xTurn ? `It is currently X's turn!` : `It is currently O's turn!`
     }
