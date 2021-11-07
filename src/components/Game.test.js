@@ -1,5 +1,5 @@
 import Game from './Game';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Board from './Board'
 
 describe('render Game component', () => {
@@ -20,4 +20,8 @@ describe('render Game component', () => {
     const turnStatus = component.state().xTurn
     expect(turnStatus).toEqual(true)  
   });
+  it('displays whose turn it is currently', () => {
+    const wrapper = mount(<Game />)
+    expect(wrapper.find('div.turnText').text()).toEqual("It is currently X's turn!")
+  })
 });
