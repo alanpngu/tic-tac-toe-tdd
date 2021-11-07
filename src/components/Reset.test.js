@@ -19,4 +19,10 @@ describe('render Reset component', () => {
     buttonComponent.simulate('click')
     expect(mockCallback).toHaveBeenCalled();
   })
+
+  it('detect if button has text for Reset', () => {
+    const wrapper = shallow(<Reset />)
+    const buttonComponent = wrapper.find('button')
+    expect(buttonComponent.text()).toEqual('Reset');
+  })
 })
