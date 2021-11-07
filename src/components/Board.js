@@ -5,10 +5,19 @@ import './Board.css'
 
 export class Board extends Component {
   renderSquare(i) {
+    let bgColor;
+    if (this.props.squares[i] === 'X') {
+      bgColor = 'rgb(210, 4, 45)'
+    } else if (this.props.squares[i] === 'O') {
+      bgColor = 'rgb(0, 71, 171)'
+    } else {
+      bgColor = 'rgb(119,149,86)'
+    }
     return (
       <Square
         onClick={() => this.props.onClick(i)}
         value = {this.props.squares[i]}
+        color = {bgColor}
       />
     );
   }

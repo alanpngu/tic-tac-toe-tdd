@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import Board from './Board'
 
 describe('render Game component', () => {
-
   let component;
   
   beforeEach(() => {

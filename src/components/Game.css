@@ -1,0 +1,10 @@
+.turnText{
+    font-size: 100px;
+    font-weight: bold;
+    -webkit-text-fill-color:bisque;
+}
+
+.gameBoard{
+    width: 25%;
+    margin: 0 auto;
+}

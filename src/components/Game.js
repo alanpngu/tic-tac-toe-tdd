@@ -3,6 +3,7 @@ import Board from './Board'
 import { calculateWinner } from '../utils/calculateWinner'
 import Reset from './Reset'
 import Undo from './Undo'
+import './Game.css'
 
 export class Game extends Component {
   constructor(props){
@@ -77,13 +78,18 @@ export class Game extends Component {
             onClick = {i => this.handleClick(i)}
           />
         </div>
-          <div className = 'turnText'>
-            {turnText}
-          </div>
-          <div className = 'otherButtons'>
-            <Undo className = 'undoButton' onClick = {() => this.undoTurn()} />
-            <Reset className = 'resetButton' onClick = {() => this.resetToStart()} />
-          </div>    
+        <br>
+        </br>
+        <div className = 'turnText'>
+          {turnText}
+        </div>
+        <br>
+        </br>
+        <div className = 'otherButtons'>
+          <Undo className = 'undoButton' onClick = {() => this.undoTurn()} />
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <Reset className = 'resetButton' onClick = {() => this.resetToStart()} />
+        </div>    
       </div>   
 
     );

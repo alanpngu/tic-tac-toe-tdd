@@ -9,7 +9,7 @@ describe('render the initial app', () => {
 
   it('finds tic-tac-toe-text', () => {
     const wrapper = shallow(<App/>);
-    const header = (<h1>Tic-Tac-Toe</h1>);
+    const header = (<div className = 'title'>Tic-Tac-Toe</div>);
     expect(wrapper.contains(header)).toEqual(true);
   });
 

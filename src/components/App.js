@@ -1,10 +1,11 @@
 import './App.css';
 import Game from './Game'
 
+
 function App() {
   return (
     <div className="App">
-      <h1>Tic-Tac-Toe</h1>
+      <div className = 'title'>Tic-Tac-Toe</div>
       <Game />
     </div>
   );
