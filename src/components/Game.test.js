@@ -111,10 +111,12 @@ describe('render Game component', () => {
     const firstButton = boardDiv.find('button').first()
     firstButton.simulate('click');
     expect(firstButton.text()).toBe('X')
+    component.find('button').at(1).simulate('click');
     const otherButtonDiv = component.find('div.otherButtons');
-    const resetButton = otherButtonDiv.find('button').first();
+    const resetButton = otherButtonDiv.find('button').last();
     resetButton.simulate('click');
     expect(firstButton.text()).toBe('')
+    expect(component.find('button').at(1).text()).toBe('')
   })
 
   it ('clicking on Undo button will undo the last turn', () => {
