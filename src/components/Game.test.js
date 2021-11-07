@@ -3,7 +3,9 @@ import { shallow, mount } from 'enzyme';
 import Board from './Board'
 
 describe('render Game component', () => {
-  let component = mount(<Game/>)
+  
+  let component = mount(<Game />);
+  
   it('renders Game', () => {
     expect(component).toBeDefined();
 
@@ -30,5 +32,13 @@ describe('render Game component', () => {
     const buttonComponent = component.find('button').first()
     buttonComponent.simulate('click')
     expect(component.find('button').first().text()).toBe('X')
+  })
+  it ('displays O properly when second player clicks', () => {
+    const firstButton = component.find('button').first()
+    firstButton.simulate('click')
+    expect(component.find('button').first().text()).toBe('X')
+    const lastButton = component.find('button').last()
+    lastButton.simulate('click')
+    expect(component.find('button').last().text()).toBe('O')
   })
 });
