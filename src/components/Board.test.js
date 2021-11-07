@@ -3,9 +3,16 @@ import Square from './Square';
 import { shallow, mount } from 'enzyme';
 
 describe('render Board component', () => {
-  let squares = Array(9).fill(null);
-  let mockCallback = jest.fn();
-  let component = mount(<Board squares={squares} onClick={mockCallback}/>);
+
+  let squares;
+  let mockCallback;
+  let component;
+  
+  beforeEach(() => {
+    squares = Array(9).fill(null);
+    mockCallback = jest.fn();
+    component = mount(<Board squares={squares} onClick={mockCallback}/>);
+  })
 
   it('Board component rendering', () => {
     expect(component).toBeDefined();
@@ -26,9 +33,6 @@ describe('render Board component', () => {
   });
   
   it('check if a button can be clicked from square from board', () => {
-    const mockCallback = jest.fn();
-    const squares = Array(9).fill(<Square onClick={mockCallback}/>)
-    const component = mount(<Board squares={squares} onClick={mockCallback}/>)
     const buttonComponent = component.find('button').first()
     buttonComponent.simulate('click')
     expect(mockCallback).toHaveBeenCalled()
