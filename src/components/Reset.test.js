@@ -10,7 +10,7 @@ describe('render Reset component', () => {
 
   it('detect if button exists', () => {
     const wrapper = shallow(<Reset />)
-    expect(wrapper.find('resetButton').length).toEqual(1);
+    expect(wrapper.find('button').length).toEqual(1);
   })
 
   it('detect if button is clickable', () => {
