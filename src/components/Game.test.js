@@ -116,4 +116,15 @@ describe('render Game component', () => {
     resetButton.simulate('click');
     expect(firstButton.text()).toBe('')
   })
+
+  it ('clicking on Undo button will undo the last turn', () => {
+    component.find('button').at(0).simulate('click');
+    component.find('button').at(1).simulate('click');
+    expect(component.find('button').at(1).text()).toBe('O');
+    const otherButtonDiv = component.find('div.otherButtons');
+    const undoButton = otherButtonDiv.find('button').first();
+    undoButton.simulate('click');
+    expect(component.find('button').at(1).text()).toBe('');
+    expect(component.find('button').at(0).text()).toBe('X');
+  })
 });
