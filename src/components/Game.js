@@ -11,10 +11,16 @@ export class Game extends Component {
     }
 
     render() {
+        let turnText = this.state.xTurn ? `It is currently X's turn!` : `It is currently O's turn!`
         return (
+            
             <div name = "game">
                 <Board squares = {this.state.squares}/>
-            </div>       
+                <div className = 'turnText'>
+                    {turnText}
+                </div>    
+            </div>   
+
         );
     }
 }
