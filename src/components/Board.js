@@ -4,31 +4,32 @@ import React, {Component} from 'react'
 import './Board.css'
 
 export class Board extends Component {
-  renderSquare() {
+  renderSquare(i) {
     return (
       <Square
-        onClick={this.props.onClick}
+        onClick={() => this.props.onClick(i)}
+        value = {this.props.squares[i]}
       />
     );
   }
 
   render() {
     return (
-      <div name = "board">
+      <div className = "board">
         <div className = 'boardRow'>
-          {this.renderSquare()}
-          {this.renderSquare()}
-          {this.renderSquare()}
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
         <div className = 'boardRow'>
-          {this.renderSquare()}
-          {this.renderSquare()}
-          {this.renderSquare()}
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
         <div className = 'boardRow'>
-          {this.renderSquare()}
-          {this.renderSquare()}
-          {this.renderSquare()}
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </div>
     </div>       
    );
