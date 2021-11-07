@@ -44,11 +44,12 @@ describe('render Game component', () => {
   })
 
   it ('displays O properly when second player clicks', () => {
-    const firstButton = component.find('button').first()
+    const boardDiv = component.find('div.gameBoard');
+    const firstButton = boardDiv.find('button').first()
     firstButton.simulate('click')
     expect(firstButton.text()).toBe('X')
 
-    const lastButton = component.find('button').last()
+    const lastButton = boardDiv.find('button').last()
     lastButton.simulate('click')
     expect(lastButton.text()).toBe('O')
   })

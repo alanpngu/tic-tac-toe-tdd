@@ -1,19 +1,28 @@
 import React, {Component} from 'react'
 import Board from './Board'
 import { calculateWinner } from '../utils/calculateWinner'
+import Reset from './Reset'
 
 export class Game extends Component {
   constructor(props){
     super(props)
-      this.state = {
-        history: [
-          {
-            squares: Array(9).fill(null),
-          }
-        ],
-        xTurn: true,
-        turnsTaken: 0
-      }
+    this.state = this.initialState;
+  }
+
+  get initialState() {
+    return {
+      history: [
+        {
+          squares: Array(9).fill(null),
+        }
+      ],
+      xTurn: true,
+      turnsTaken: 0
+    }
+  }
+
+  resetToStart() {
+    this.setState(this.initialState);
   }
 
   handleClick(i) {
@@ -49,12 +58,17 @@ export class Game extends Component {
 
     return (    
       <div name = "game">
-        <Board 
-          squares = {current.squares}
-          onClick = {i => this.handleClick(i)}
-        />
+        <div className = 'gameBoard'>
+          <Board 
+            squares = {current.squares}
+            onClick = {i => this.handleClick(i)}
+          />
+        </div>
           <div className = 'turnText'>
             {turnText}
+          </div>
+          <div className = 'otherButtons'>
+            <Reset className = 'resetButton' onClick = {() => this.resetToStart()} />
           </div>    
       </div>   
 
