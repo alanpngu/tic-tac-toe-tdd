@@ -29,9 +29,8 @@ export class Game extends Component {
         xTurn: !this.state.xTurn,
         turnsTaken: (this.state.turnsTaken - 1)
       })
-    } else {
-      return;
-    }
+    } 
+    return;
   }
 
   resetToStart() {
@@ -42,10 +41,13 @@ export class Game extends Component {
     const history = this.state.history.slice(0, this.state.turnsTaken + 1)
     const current = history[history.length - 1];
     const squares = current.squares.slice();
+
     if(calculateWinner(squares) || squares[i]) {
         return;
     }
+
     squares[i] = this.state.xTurn ? 'X' : 'O';
+
     this.setState({
       history: history.concat([
         {
@@ -62,6 +64,7 @@ export class Game extends Component {
     const current = history[this.state.turnsTaken];
     const winnerFound = calculateWinner(current.squares);
     let turnText;
+
     if (winnerFound) {
       turnText = winnerFound + " has won the game!";
     } else if (history.length >= 10) {
@@ -91,7 +94,6 @@ export class Game extends Component {
           <Reset className = 'resetButton' onClick = {() => this.resetToStart()} />
         </div>    
       </div>   
-
     );
   }
 }

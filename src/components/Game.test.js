@@ -110,6 +110,7 @@ describe('render Game component', () => {
     const firstButton = boardDiv.find('button').first()
     firstButton.simulate('click');
     expect(firstButton.text()).toBe('X')
+
     component.find('button').at(1).simulate('click');
     const otherButtonDiv = component.find('div.otherButtons');
     const resetButton = otherButtonDiv.find('button').last();
@@ -122,6 +123,7 @@ describe('render Game component', () => {
     component.find('button').at(0).simulate('click');
     component.find('button').at(1).simulate('click');
     expect(component.find('button').at(1).text()).toBe('O');
+    
     const otherButtonDiv = component.find('div.otherButtons');
     const undoButton = otherButtonDiv.find('button').first();
     undoButton.simulate('click');

@@ -1,6 +1,6 @@
 import Board from './Board';
 import Square from './Square';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('render Board component', () => {
   let squares;
