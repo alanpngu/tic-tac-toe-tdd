@@ -130,4 +130,41 @@ describe('render Game component', () => {
     expect(component.find('button').at(1).text()).toBe('');
     expect(component.find('button').at(0).text()).toBe('X');
   })
+
+  it('click an Undo button after a draw will revert draw text to turn text', () => {
+    component.find('button').at(0).simulate('click');
+    component.find('button').at(1).simulate('click');
+    component.find('button').at(2).simulate('click');
+    component.find('button').at(4).simulate('click');
+    component.find('button').at(3).simulate('click');
+    component.find('button').at(5).simulate('click');   
+    component.find('button').at(7).simulate('click');
+    component.find('button').at(6).simulate('click');
+    component.find('button').at(8).simulate('click');
+    expect(component.find('div.turnText').text()).toEqual("This game is a draw!")
+
+    const otherButtonDiv = component.find('div.otherButtons');
+    const undoButton = otherButtonDiv.find('button').first();
+    undoButton.simulate('click');
+    expect(component.find('div.turnText').text()).toEqual("It is currently X's turn!");
+  })
+
+  it('click an Undo button after X takes 9 turns to win should revert win text to turn text', () => {
+    component.find('button').at(0).simulate('click');
+    component.find('button').at(1).simulate('click');
+    component.find('button').at(4).simulate('click');
+    component.find('button').at(3).simulate('click');
+    component.find('button').at(2).simulate('click');
+    component.find('button').at(6).simulate('click');   
+    component.find('button').at(7).simulate('click');
+    component.find('button').at(5).simulate('click');
+    component.find('button').at(8).simulate('click');
+    expect(component.find('div.turnText').text()).toEqual("X has won the game!")
+
+    const otherButtonDiv = component.find('div.otherButtons');
+    const undoButton = otherButtonDiv.find('button').first();
+    undoButton.simulate('click');
+    expect(component.find('div.turnText').text()).toEqual("It is currently X's turn!");
+  })
+
 });
