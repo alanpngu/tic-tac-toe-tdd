@@ -1,6 +1,6 @@
 import App from './App';
 import { shallow } from 'enzyme';
-import Game from './Game';
+import Game from './components/Game/Game';
 
 describe('render the initial app', () => {
   it('renders App', () => {

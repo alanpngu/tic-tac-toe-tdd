@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import Board from './Board'
-import { calculateWinner } from '../utils/calculateWinner'
-import Reset from './Reset'
-import Undo from './Undo'
+import Board from '../Board/Board'
+import { calculateWinner } from '../../utils/calculateWinner'
+import Reset from '../Reset/Reset'
+import Undo from '../Undo/Undo'
 import './Game.css'
 
 export class Game extends Component {

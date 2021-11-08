@@ -1,5 +1,5 @@
 import Board from './Board';
-import Square from './Square';
+import Square from '../Square/Square';
 import { mount } from 'enzyme';
 
 describe('render Board component', () => {

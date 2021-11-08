@@ -1,6 +1,6 @@
 import Game from './Game';
-import { shallow, mount } from 'enzyme';
-import Board from './Board'
+import { mount } from 'enzyme';
+import Board from '../Board/Board'
 
 describe('render Game component', () => {
   let component;
@@ -123,7 +123,7 @@ describe('render Game component', () => {
     component.find('button').at(0).simulate('click');
     component.find('button').at(1).simulate('click');
     expect(component.find('button').at(1).text()).toBe('O');
-    
+
     const otherButtonDiv = component.find('div.otherButtons');
     const undoButton = otherButtonDiv.find('button').first();
     undoButton.simulate('click');

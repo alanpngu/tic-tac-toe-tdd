@@ -1,4 +1,4 @@
-import Square from './Square'
+import Square from '../Square/Square'
 import React, {Component} from 'react'
 import './Board.css'
 
