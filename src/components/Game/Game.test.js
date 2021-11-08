@@ -167,4 +167,11 @@ describe('render Game component', () => {
     expect(component.find('div.turnText').text()).toEqual("It is currently X's turn!");
   })
 
+  it('click an Undo button when no squares are filled does nothing', () => {
+    const otherButtonDiv = component.find('div.otherButtons');
+    const undoButton = otherButtonDiv.find('button').first();
+    undoButton.simulate('click');
+    component.find('button').at(0).simulate('click');
+    expect(component.find('button').at(0).text()).toBe('X');
+  })
 });
