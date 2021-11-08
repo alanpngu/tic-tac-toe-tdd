@@ -24,8 +24,8 @@ export class Game extends Component {
   }
 
   undoTurn() {
-    this.state.history.pop();
     if (this.state.turnsTaken !== 0) {
+      this.state.history.pop();
       this.setState({
         history: this.state.history,
         xTurn: !this.state.xTurn,
